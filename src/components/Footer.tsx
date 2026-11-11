@@ -56,13 +56,13 @@ export function Footer() {
       </div>
       <div className="flex gap-12 text-sm">
         <div className="flex flex-col gap-2">
-          <a href="/" className="hover:text-accent-primary">
+          <a href={import.meta.env.BASE_URL} className="hover:text-accent-primary">
             Home
           </a>
-          <a href="/games" className="hover:text-accent-primary">
+          <a href={`${import.meta.env.BASE_URL}games`} className="hover:text-accent-primary">
             Games
           </a>
-          <a href="/search" className="hover:text-accent-primary">
+          <a href={`${import.meta.env.BASE_URL}search`} className="hover:text-accent-primary">
             Search
           </a>
           <a
@@ -93,13 +93,13 @@ export function Footer() {
           {/* <a href="/reset" class="hover:text-accent-primary">
             Reset
           </a> */}
-          <a href="/preferences" className="hover:text-accent-primary">
+          <a href={`${import.meta.env.BASE_URL}preferences`} className="hover:text-accent-primary">
             Preferences
           </a>
-          <a href="/privacy" className="hover:text-accent-primary">
+          <a href={`${import.meta.env.BASE_URL}privacy`} className="hover:text-accent-primary">
             Privacy
           </a>
-          <a href="/terms" className="hover:text-accent-primary">
+          <a href={`${import.meta.env.BASE_URL}terms`} className="hover:text-accent-primary">
             Terms
           </a>
         </div>

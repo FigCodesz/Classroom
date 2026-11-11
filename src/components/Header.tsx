@@ -30,7 +30,9 @@ function Link(props: {
 }) {
   return (
     <motion.a
-      href={props.href}
+      href={/^(https?:)?\/\//.test(props.href)
+        ? props.href
+        : `${import.meta.env.BASE_URL}${props.href.replace(/^\/+/, "")}`}
       target={/^(https?:)?\/\//.test(props.href) ? "_blank" : "_self"}
       variants={item}
       className="flex items-center gap-2 transition-colors hover:text-accent-primary"
@@ -66,7 +68,11 @@ export function Header() {
       animate="visible"
     >
       <div className="flex gap-5">
-        <motion.a href="/" variants={item} aria-label="Home">
+        <motion.a
+          href={import.meta.env.BASE_URL}
+          variants={item}
+          aria-label="Home"
+        >
           <Transparent className="h-6 w-auto" />
         </motion.a>
         <Link href="/" icon={PiHouseBold} text="Home" />

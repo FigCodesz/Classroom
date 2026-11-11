@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
   <head>
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/icons/128.png" />
+    <link rel="icon" href="%BASE_URL%favicon.ico" />
+    <link rel="apple-touch-icon" href="%BASE_URL%icons/128.png" />
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f59e0b" />
     <title>Radon Games</title>
     <meta property="og:title" content="Radon Games" />
-    <meta property="og:image" content="/icons/128.png" />
+    <meta property="og:image" content="%BASE_URL%icons/128.png" />
     <meta
       name="description"
       content="An open-source unblocked games website built with simplicity in mind."
@@ -44,19 +44,20 @@
       gtag("config", "G-0GR0HN1RFL");
     </script>
 
-    <script src="/scram/scramjet.all.js"></script>
+    <script src="%BASE_URL%scram/scramjet.all.js"></script>
   </head>
   <body class="scroll-smooth bg-bg-primary font-medium text-text-primary">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
+      const baseUrl = "%BASE_URL%";
       const { ScramjetController } = $scramjetLoadController();
       const scramjet = new ScramjetController({
-        prefix: "/~/sj/",
+        prefix: `${baseUrl}~/sj/`,
         files: {
-          wasm: "/scram/scramjet.wasm.wasm",
-          all: "/scram/scramjet.all.js",
-          sync: "/scram/scramjet.sync.js",
+          wasm: `${baseUrl}scram/scramjet.wasm.wasm`,
+          all: `${baseUrl}scram/scramjet.all.js`,
+          sync: `${baseUrl}scram/scramjet.sync.js`,
         },
         flags: {
           rewriterLogs: false,

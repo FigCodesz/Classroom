@@ -1,4 +1,4 @@
-importScripts("/scram/scramjet.all.js");
+importScripts(new URL("scram/scramjet.all.js", self.location.href).toString());
 
 const { ScramjetServiceWorker } = $scramjetLoadWorker();
 const scramjet = new ScramjetServiceWorker();

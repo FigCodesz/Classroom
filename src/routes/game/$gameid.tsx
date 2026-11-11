@@ -76,7 +76,7 @@ function RouteComponent() {
           id="game"
           scrolling="no"
           className="aspect-video w-full"
-          src={`/cdn/${game.type}.html?id=${game.id}${
+          src={`https://cdn.radon.games/${game.type}.html?id=${game.id}${
             game.type === "emulator" ? "&emu=${game.emulator}" : ""
           }`}
         ></iframe>
@@ -89,7 +89,7 @@ function RouteComponent() {
                 return (
                   <a
                     className="inset-0 whitespace-nowrap rounded bg-accent-secondary p-1 text-xs font-bold uppercase tracking-wide transition-all hover:scale-110"
-                    href={`/tag/${tag}`}
+                    href={`${import.meta.env.BASE_URL}tag/${tag}`}
                   >
                     {tag}
                   </a>

@@ -20,7 +20,7 @@ export function GameCard({ game }: { game: Game }) {
         <div className="absolute h-full w-full animate-pulse bg-bg-secondary" />
         <Image
           className="absolute left-0 top-0 h-full w-full transition-all group-hover:scale-105"
-          src={`/cdn/images/${game.id}.png?h=180&w=320`}
+          src={`https://cdn.radon.games/images/${game.id}.png?h=180&w=320`}
           alt={game.title}
         />
         <div
@@ -34,7 +34,7 @@ export function GameCard({ game }: { game: Game }) {
               (tag, i) => (
                 <a
                   key={i}
-                  href={`/tag/${tag}`}
+                  href={`${import.meta.env.BASE_URL}tag/${tag}`}
                   onClick={(e) => e.stopPropagation()}
                   className="inset-0 whitespace-nowrap rounded bg-accent-secondary p-1 text-xs font-bold uppercase tracking-wide transition-all hover:scale-110"
                 >

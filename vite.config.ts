@@ -9,8 +9,12 @@ import { libcurlPath } from "@mercuryworkshop/libcurl-transport";
 //@ts-expect-error ts being ts
 import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 const isDev = process.env.NODE_ENV === 'development';
+const pagesBase = process.env.GITHUB_ACTIONS === "true"
+  ? `/${process.env.GITHUB_REPOSITORY?.split("/")[1]}/`
+  : "/";
 // https://vite.dev/config/
 export default defineConfig({
+  base: pagesBase,
   plugins: [
     tanstackRouter({
       target: 'react',

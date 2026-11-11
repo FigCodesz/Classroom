@@ -13,7 +13,7 @@ export function Home() {
   const { data } = useQuery({
     queryKey: ["games"],
     queryFn: async () => {
-      return fetch("/games.json").then((res) => res.json());
+      return fetch(`${import.meta.env.BASE_URL}games.json`).then((res) => res.json());
     }
   });
 
@@ -54,7 +54,7 @@ export function Home() {
         </p>
         <div className="flex gap-5">
           <motion.a
-            href="/games"
+            href={`${import.meta.env.BASE_URL}games`}
             className="flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-lg bg-bg-secondary px-4 py-2 font-semibold shadow-lg focus:outline-0"
             initial={{
               boxShadow: `0px 0px 0px ${bgSecondary}`
@@ -72,7 +72,7 @@ export function Home() {
             Browse Games
           </motion.a>
           <motion.a
-            href={`/game/${randomGame.id}`}
+            href={`${import.meta.env.BASE_URL}game/${randomGame.id}`}
             className="flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-lg bg-accent-secondary px-4 py-2 font-semibold shadow-lg focus:outline-0"
             initial={{
               boxShadow: `0px 0px 0px ${accentSecondary}`

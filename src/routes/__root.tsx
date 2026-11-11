@@ -41,13 +41,13 @@ function NotFound() {
         Try returning{" "}
         <a
           className="underline transition-colors hover:text-accent-primary"
-          href="/"
+          href={import.meta.env.BASE_URL}
         >
           home
         </a>{" "}
         or searching games
       </p>
-      <form action="/search" method="GET">
+      <form action={`${import.meta.env.BASE_URL}search`} method="GET">
         <input
           name="q"
           className="rounded-md  border border-bg-secondary bg-transparent px-2 py-1 text-base font-normal shadow outline-accent-secondary ring-accent-primary transition-all focus:outline-0 focus:ring-2"

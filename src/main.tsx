@@ -9,7 +9,14 @@ import ReactDOM from "react-dom/client";
 
 const queryClient = new QueryClient();
 // Create a new router instance
-const router = createRouter({ routeTree, defaultPreload: "viewport" });
+const router = createRouter({
+  routeTree,
+  basepath:
+    import.meta.env.BASE_URL === "/"
+      ? "/"
+      : import.meta.env.BASE_URL.replace(/\/$/, ""),
+  defaultPreload: "viewport"
+});
 
 // Register the router instance for type safety
 declare module "@tanstack/react-router" {
@@ -36,28 +43,31 @@ declare global {
 
 const title = localStorage.getItem("title")?.trim() || "Radon Games";
 document.title = title;
-const icon = localStorage.getItem("icon")?.trim() || "/favicon.ico";
+const icon =
+  localStorage.getItem("icon")?.trim() || `${import.meta.env.BASE_URL}favicon.ico`;
 document.querySelector('link[rel="icon"]')!.setAttribute("href", icon);
 
 if ("serviceWorker" in navigator) {
   if (window.scram) {
     navigator.serviceWorker
-      .register("/sw.js", {
-        scope: "/"
+      .register(`${import.meta.env.BASE_URL}sw.js`, {
+        scope: import.meta.env.BASE_URL
       })
       .then(() => {
         console.log(`Registered SW`);
       });
     navigator.serviceWorker.ready.then(() => {
-      const connection = new BareMuxConnection("/baremux/worker.js");
+      const connection = new BareMuxConnection(
+        `${import.meta.env.BASE_URL}baremux/worker.js`
+      );
       window.Connection = connection;
 
-      connection.setTransport("/libcurl/index.mjs", [
+      connection.setTransport(`${import.meta.env.BASE_URL}libcurl/index.mjs`, [
         {
           wisp:
             location.protocol === "http:"
-              ? `ws://${location.host}/w/`
-              : `wss://${location.host}/w/`
+              ? `ws://${location.host}${import.meta.env.BASE_URL}w/`
+              : `wss://${location.host}${import.meta.env.BASE_URL}w/`
         }
       ]);
       console.log(`Set transport to libcurl`);
